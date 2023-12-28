@@ -1,0 +1,6 @@
+.template{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    justify-content: space-between;
+}
