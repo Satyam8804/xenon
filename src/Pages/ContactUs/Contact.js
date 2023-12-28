@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import './Contact.css';
 
 const Contact = () => {
@@ -9,12 +10,18 @@ const Contact = () => {
     message: '',
   });
 
+  const handleInputChange = (fieldName, value) => {
+    setFormData({
+      ...formData,
+      [fieldName]: value,
+    });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // Send form data to the backend
-      const response = await fetch('http://localhost:3001/api/contact', {
+      const response = await fetch('https://xenon-rg4h.onrender.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +31,7 @@ const Contact = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data.message);
+        toast.success(data.message);
         // Optionally, reset the form after successful submission
         setFormData({
           name: '',
@@ -34,23 +41,17 @@ const Contact = () => {
         });
       } else {
         const errorData = await response.json();
-        console.error(errorData.error || 'Form submission failed');
+        toast.error(errorData.error || 'Form submission failed');
       }
     } catch (error) {
       console.error('Error during form submission:', error);
+      toast.error('An error occurred during form submission');
     }
-  };
-
-  const handleInputChange = (fieldName, value) => {
-    setFormData({
-      ...formData,
-      [fieldName]: value,
-    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-<label>
+      <label>
         Name:
         <input
           type="text"
@@ -89,8 +90,8 @@ const Contact = () => {
       </label>
       <br />
 
-      <button type="submit">Submit</button>   
-       </form>
+      <button type="submit">Submit</button> 
+    </form>
   );
 };
 

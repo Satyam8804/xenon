@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
+import './Home.css'
+
+const ProductCard = ({ product }) => (
+  <div className="card">
+    <img src={product.image} alt={product.title} />
+    <div className="card-body">
+      <h5 className="card-title">{product.title}</h5>
+      <p className="card-text">{product.description}</p>
+      <p className="card-text">${product.price}</p>
+    </div>
+  </div>
+);
 
 const Home = () => {
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then((res) => res.json())
+      .then((json) => setProducts(json));
+  }, []);
+
   return (
-    <div>Home</div>
-  )
+    <div className="product-list">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
 }
 
 export default Home
