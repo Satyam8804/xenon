@@ -28,7 +28,7 @@ const LoginInForm = ({ setIsLoggedIn }) => {
     event.preventDefault();
 
     try {
-      const response = await fetch('https://xenon-rg4h.onrender.com/api/signin', {
+      const response = await fetch('/api/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
