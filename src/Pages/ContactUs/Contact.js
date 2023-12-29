@@ -21,7 +21,7 @@ const Contact = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch('https://xenon-rg4h.onrender.com/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,6 +51,7 @@ const Contact = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h1>Contact Form </h1>
       <label>
         Name:
         <input

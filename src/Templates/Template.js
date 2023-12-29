@@ -9,13 +9,6 @@ const Template = ({title,formtype,setIsLoggedIn}) => {
         <div className="title">
             <h1>{title}</h1>
             {formtype === "signup"?(<SignUpForm setIsLoggedIn={setIsLoggedIn}/>):(<LoginInForm  setIsLoggedIn={setIsLoggedIn}/>)}
-            <div className="">
-                <div className=""></div>
-                <div className="">OR</div>
-                <div className=""></div>
-            </div>
-
-            <button>Sign Up With Google</button>
         </div>
     </div>
   )

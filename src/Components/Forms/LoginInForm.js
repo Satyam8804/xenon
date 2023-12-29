@@ -26,31 +26,37 @@ const LoginInForm = ({ setIsLoggedIn }) => {
 
   async function submitHandler(event) {
     event.preventDefault();
-
+  
     try {
-      const response = await fetch('https://xenon-rg4h.onrender.com/api/signin', {
+      const response = await fetch('/api/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+        credentials:'include',
       });
-
+  
       if (response.ok) {
         const data = await response.json();
         setIsLoggedIn(true);
         toast.success('Logged In');
         navigate('/dashboard');
       } else {
-        const errorData = await response.json();
-        toast.error(errorData.error || 'Invalid credentials');
+        try {
+          const errorData = await response.json();
+          toast.error(errorData.error || 'Invalid credentials');
+        } catch (error) {
+          console.error('Error parsing JSON:', error);
+          toast.error('An error occurred during sign-in');
+        }
       }
     } catch (error) {
       console.error('Error during sign-in:', error);
       toast.error('An error occurred during sign-in');
     }
   }
-
+  
   return (
     <form action="" onSubmit={submitHandler}>
       <label>

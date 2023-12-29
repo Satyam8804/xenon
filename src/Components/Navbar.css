@@ -1,25 +1,31 @@
-.nav-bar{
+/* Common styles for the navbar */
+.nav-bar {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color:#1e1e1e ;
+    background-color: #1e1e1e;
 }
-.options{
+
+.options {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 2rem;
 }
-.links ul li{
+
+.links ul {
+    padding: 0;
+    margin: 0;
     list-style: none;
 }
-.links ul li>*{
+
+.links ul li > * {
     text-decoration: none;
     color: #fff;
     font-weight: 700;
 }
 
-.btn{
+.btn {
     cursor: pointer;
     height: 30px;
     width: auto;
@@ -29,10 +35,28 @@
     color: #fff;
     border: none;
 }
-.btns{
+
+.btns {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
+}
+
+@media (max-width: 600px) {
+    .nav-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .options {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btns {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }

@@ -17,8 +17,9 @@ function App() {
   return (
     <div className="App">
        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn ={setIsLoggedIn}/>
-       <div className="content">
        <Toaster position="top-right" reverseOrder={false} />
+
+       <div className="content">
        <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/signin" element={<SignIn  setIsLoggedIn={setIsLoggedIn}/>}/>
