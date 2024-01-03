@@ -3,7 +3,10 @@ import { toast } from 'react-hot-toast'
 import {AiOutlineEye,AiOutlineEyeInvisible} from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import './Form.css'
+
+
 const SignUpForm = ({setIsLoggedIn}) => {
+  
     const navigate = useNavigate()
     const [formData , setFormData] = useState({
         fName:"",
@@ -39,7 +42,7 @@ const SignUpForm = ({setIsLoggedIn}) => {
           const response = await fetch('/api/signup', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+              'Content-Type': 'application/json; charset=utf-8',
             },
             body: JSON.stringify(formData),
             mode: 'no-cors'

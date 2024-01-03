@@ -5,7 +5,9 @@ import { toast } from 'react-hot-toast';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const LoginInForm = ({ setIsLoggedIn }) => {
+
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -31,7 +33,7 @@ const LoginInForm = ({ setIsLoggedIn }) => {
       const response = await fetch('/api/signin', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json; charset=utf-8',
         },
         body: JSON.stringify(formData),
         credentials:'include',
